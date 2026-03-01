@@ -10,7 +10,7 @@ records : Dict[int, dict] = {}
 
 next_id = 1
 
-@app.post("/records/")
+@app.post("/records")
 def create_record(record: PhoneRecord):
     global next_id
     records[next_id] = record.model_dump()
@@ -46,6 +46,6 @@ def delete_record(record_id: int):
     
     return {"message": "Record deleted"}
 
-@app.get("/records/")
+@app.get("/records")
 def list_records():
     return list(records.values())
